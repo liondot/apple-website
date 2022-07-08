@@ -75,7 +75,7 @@ a {
     margin: 5px 0;
     height: 3em;
     font-size: 2.5rem;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .main-message p {
@@ -98,32 +98,43 @@ a {
     padding: 0 1rem;
     font-size: 1.2rem;
     color: #888;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.desciption strong{
+.desciption strong {
     float: left;
     margin-right: .2em;
     font-size: 3rem;
     color: rgb(29, 29, 31);
 }
+
 .desc-message {
     font-weight: bold;
     width: 50%;
 }
+
 .pin {
     width: 1px;
     height: 100px;
     background: rgb(29, 29, 31);
 }
+
 .mid-message {
+    max-width: 1000px;
+    margin: 0 auto;
     font-size: 2rem;
     color: #888;
-    padding: 0 1rem ;
+    padding: 0 1rem;
 }
+
 .mid-message strong {
     color: rgb(29, 29, 31);
 }
+
 .canvas-caption {
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 0 1rem;
     font-size: 1.2rem;
     color: #888;
@@ -135,6 +146,48 @@ a {
     align-items: center;
     justify-content: center;
     height: 7rem;
-    background:rgb(1, 20, 63);
+    background: rgb(1, 20, 63);
     color: #fff;
+}
+
+@media (min-width: 1024px) {
+    #scroll-section-0 h1 {
+        font-size: 9vw;
+    }
+
+    .main-message {
+        font-size: 4vw;
+    }
+
+    .desciption {
+
+        font-size: 2rem;
+    }
+
+    .desciption strong {
+        font-size: 6rem;
+    }
+
+    #scroll-section-2 .main-message {
+        font-size: 6vw;
+    }
+
+    .main-message small {
+        font-size: 1.5vw;
+    }
+
+    .desc-message {
+        width: 20%;
+    }
+
+    .mid-message {
+        font-size: 4vw;
+    }
+
+    .canvas-caption {
+        font-size: 2rem;
+    }
+
+
+
 }
