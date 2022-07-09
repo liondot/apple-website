@@ -85,6 +85,7 @@ a {
     height: 3em;
     font-size: 2.5rem;
     opacity: 0;
+    top: 30vh;
 }
 
 .main-message p {
@@ -129,6 +130,15 @@ a {
     background: rgb(29, 29, 31);
 }
 
+#scroll-section-2 .message-b {
+    top: 10%;
+    left: 40%;
+}
+#scroll-section-2 .message-c {
+    top: 15%;
+    left: 45%;
+}
+
 .mid-message {
     max-width: 1000px;
     margin: 0 auto;
@@ -161,7 +171,6 @@ a {
 
 .sticky-elem {
     position: fixed;
-    top: 0;
     left: 0;
     width: 100%;
     display: none;
@@ -191,6 +200,15 @@ a {
     .desciption strong {
         font-size: 6rem;
     }
+
+    #scroll-section-2 .message-b {
+        top: 20%;
+        left: 53%;
+    }
+    #scroll-section-2 .message-c {
+        left: 55%;
+    }
+    
 
     #scroll-section-2 .main-message {
         font-size: 6vw;
