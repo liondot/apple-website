@@ -1,11 +1,10 @@
- (() => {
+// "main.js 적용 내용" 강의에서 추가된 부분을 따로 정리해 놓은 파일입니다.
+// 아래 내용을 작성하고 계신 main.js의 해당 부분에 붙여 넣으시면 됩니다.
 
-   let yOffset = 0; //window.pageYOffset 대신 쓸 변수
-   let prevScrollHeight = 0; //현재 스크롤 위치(yOffset)보다 이전에 위치한 스크롤 섹션들의 스크롤 높이값의 합
-   let currentScene = 0; //현재 활성화된 (눈 앞에 보고있는) 씬(scroll-section)
-   let enterNewScene = false; //새로운 scene이 시작된 순간 true
 
-   const sceneInfo = [
+
+// sceneInfo 추가내용 적용 후
+const sceneInfo = [
     {
         // 0
         type: 'sticky',
@@ -96,58 +95,10 @@
     }
 ];
 
-   function setLayout() {
-    // 각 스크롤 섹션의 높이 세팅 
-     for (let i = 0; i < sceneInfo.length; i++) {
-       if(sceneInfo[i].type === 'sticky'){
-        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
-       }  else if (sceneInfo[i].type === 'nomal') {
-        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight + window.innerHeight * 0.5;;
-       }
-       sceneInfo[i].objs.container.style.height =  `${sceneInfo[i].scrollHeight}px`
-     }
 
-     yOffset = window.pageYOffset;
-     let totalScrollHeight = 0;
-     for (let i = 0; i < sceneInfo.length; i++) {
-       totalScrollHeight += sceneInfo[i].scrollHeight;
-       if (totalScrollHeight >= yOffset) {
-         currentScene = i;
-         break
-       }
-     }
-     document.body.setAttribute('id', `show-scene-${currentScene}`);
-   }
 
-   function calcValues(values, currentYOffset) {
-     let rv;
-     // 현재 씬(스크롤섹션)에서 스크롤된 범위를 비율로 구하기 
-     const scrollHeight = sceneInfo[currentScene].scrollHeight;
-     const scrollRatio = currentYOffset / scrollHeight;
-
-     //  rv = scrollRatio * (values[1] - values[0] + values[0])
-
-     if (values.length === 3) {
-       // start~ end 사이에 애니메이션 실행
-       const partScrollStart = values[2].start * scrollHeight;
-       const partScrollEnd = values[2].end * scrollHeight;
-       const partScrollHeight = partScrollEnd - partScrollStart;
-
-       if (currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd) {
-         rv = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0] + values[0])
-       } else if (currentYOffset < partScrollStart) {
-         rv = values[0];
-       } else if (currentYOffset > partScrollEnd) {
-         rv = values[1];
-       }
-     } else {
-       rv = scrollRatio * (values[1] - values[0] + values[0])
-     }
-
-     return rv;
-   }
-
-   function playAnimation() {
+// playAnimation 추가내용 적용 후
+function playAnimation() {
     const objs = sceneInfo[currentScene].objs;
     const values = sceneInfo[currentScene].values;
     const currentYOffset = yOffset - prevScrollHeight;
@@ -242,39 +193,3 @@
             break;
     }
 }
-
-   function scrollLoop() {
-     enterNewScene = false;
-     prevScrollHeight = 0;
-
-     for (let i = 0; i < currentScene; i++) {
-       enterNewScene = true;
-       prevScrollHeight += sceneInfo[i].scrollHeight;
-     }
-
-     if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
-       enterNewScene = true;
-       currentScene++;
-       document.body.setAttribute('id', `show-scene-${currentScene}`);
-     }
-
-     if (yOffset < prevScrollHeight) {
-       if (currentScene === 0)
-         return;
-       currentScene--;
-       document.body.setAttribute('id', `show-scene-${currentScene}`);
-     }
-
-     if (enterNewScene) return;
-     playAnimation();
-
-   }
-
-   window.addEventListener('scroll', () => {
-     yOffset = window.pageYOffset;
-     scrollLoop()
-   })
-
-   window.addEventListener('resize', setLayout);
-   window.addEventListener('load', setLayout)
- })();
