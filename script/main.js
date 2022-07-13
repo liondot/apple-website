@@ -7,6 +7,7 @@
 
    const sceneInfo = [
     {
+<<<<<<< HEAD
         // 0
         type: 'sticky',
         heightNum: 5, // 브라우저 높이의 5배로 scrollHeight 세팅
@@ -36,6 +37,19 @@
             messageC_translateY_out: [0, -20, { start: 0.65, end: 0.7 }],
             messageD_translateY_out: [0, -20, { start: 0.85, end: 0.9 }]
         }
+=======
+      // 0
+      type: 'sticky',
+      heightNum: 5, //브라우저 높이의 5배로 scrollHeight 세팅
+      scrollHeight: 0,
+      objs: {
+        container: document.querySelector('#scroll-section-0'),
+        messageA: document.querySelector('#scroll-section-0 .main-message.a'),
+        messageB: document.querySelector('#scroll-section-0 .main-message.b'),
+        messageC: document.querySelector('#scroll-section-0 .main-message.c'),
+        messageD: document.querySelector('#scroll-section-0 .main-message.d')
+      }
+>>>>>>> develop
     },
     {
         // 1
