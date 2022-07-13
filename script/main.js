@@ -11,7 +11,11 @@
       heightNum: 5, //브라우저 높이의 5배로 scrollHeight 세팅
       scrollHeight: 0,
       objs: {
-        container: document.querySelector('#scroll-section-0')
+        container: document.querySelector('#scroll-section-0'),
+        messageA: document.querySelector('#scroll-section-0 .main-message.a'),
+        messageB: document.querySelector('#scroll-section-0 .main-message.b'),
+        messageC: document.querySelector('#scroll-section-0 .main-message.c'),
+        messageD: document.querySelector('#scroll-section-0 .main-message.d')
       }
     },
     {
